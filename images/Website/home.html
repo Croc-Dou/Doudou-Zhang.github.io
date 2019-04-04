@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content = "width=device-width ,  user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="Predict Movie Rating">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+<link href="main.css" rel="stylesheet" type="text/css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.6/vue.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.15.2/axios.min.js"></script>
+<style>
+	[v-cloak] {
+		display: none;
+	}
+</style>
+<title>Predict Movie Rating</title>
+</head>
+<body>
+	<div id="app">
+           	<header class="navbar navbar-static-top navbar-fixed-top">
+                <div class="container-fluid">
+                    <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#introduction">Introduction</a></li>
+                        <li><a href="#data-scraping">Data Scraping</a></li>
+                        <li><a href="#data-view">Data View</a></li>
+                        <li><a href="#analysis">Analysis</a></li>
+                        <li><a href="#prediction">Prediction</a></li>
+                        <li><a href="#limitation">Limitations</a></li>
+                    </ul>
+                    </div>
+                </div>
+            </header>
+			<div id="header-bg" class="header header-bg-alt">
+                <div class="header-bg-image-alt"></div>
+                <div class="container-fluid pos-rel">
+                    <div class="main-headline">
+                        <h1>Explore Movie Rating</h1>
+                        <h3 class="title-white">By Doudou Zhang and Ying Wang</h3>
+                        <div class="lead mb2">Is there a better way for us to tell the greatness of movie without relying on critics or our own instincts?</div>
+                    </div>
+                </div>
+            </div> 
+			<section id="introduction">
+				<div class="container-fluid">
+                	<h2>Introduction</h2>
+                     <div class="row">
+                        <div class="col-xs-12 col-sm-6">
+                                <h3 class="title-red">Overview</h3>
+                                <p>Is there a possibility that we could tell the greatness of a movie before it is released in cinema?This question puzzled me for a long time since there is no universal way to claim the goodness of movies and many good movies are being ignored for most people.Many people rely on critics to gauge the quality of a film, while others use their instincts. But it takes the time to obtain a reasonable amount of critics’ review after a movie is released. And human instinct sometimes is unreliable.</p>
+                                <a href="http://www.imdb.com/" target="_blank">Visit IMDB Website</a>
+                        </div>
+                        <div class="col-xs-12 col-sm-6">
+                            <div class="speaker-item">
+                        		<img src="imdb-1.png" class="speaker-img">
+                			</div>
+                        </div>
+                    </div>
+                </div>
+			</section>
+			<section id="data-scraping">
+				<div class="container-fluid">
+                	<h2>Data Scraping</h2>
+                     <div class="row">
+                        <div class="col-xs-12 col-sm-6">
+                                <h3 class="title-red">Data Scraping</h3>
+                                <p>We collect two data sets from two websites. First, we collect a list of 5167 movie titles from "the-numbers" website. Then we save the titles into a csv file named data.csv. Next, we search those titles from IMDB website, and collect data from the web page.</p>
+                                <p>After data collecting, we now have 27 variables for 5043 movies. Over all, they span across 100 years in 66 countries. There are 2399 unique director names, and 30K actors/actresses. Roughly speaking, half of the variables is directly related to movies themselves, such as title, duration, country, etc. Another half is related to the people who involved in the production of movies, for instance, director Facebook popularity, IMDB rating score, etc.</p>
+                        </div>
+                        <div class="col-xs-12 col-sm-6">
+                            <div class="speaker-item">
+                        		<img src="data-sum.png" class="speaker-img"> 
+                			</div>
+                        </div>  
+                    </div>
+                    <div class="row">
+                    	<div class="col-xs-12 col-sm-12">
+                    		<div class="speaker-item">
+                        		<img src="metadata-1.png" class="speaker-img"> 
+                        	</div>
+                        	<div class="speaker-item">
+                        		<img src="metadata-2.png" class="speaker-img"> 
+                        	</div>
+                    	</div>
+                    </div>
+                </div>
+			</section>
+			<section id="data-view">
+				<div class="container-fluid">
+                	<h2>Data View</h2>
+                     <div class="row">
+                        <div class="col-xs-12 col-sm-6">
+                                <h3 class="title-red">Word cloud</h3>
+                                <div class="speaker-item">
+                        		<img src="totalwordcloud.png" class="speaker-img">
+                			    </div>
+						 </div>
+               			<div class="col-xs-12 col-sm-6">
+                			    <p>We made three word cloud graphics of movies' keywords and their correspondence frequency plots. The first word cloud shown here is based on all of the 5000+ movies. As we can see, nudity is the most popular word, and then comes with friend, love and school. </p>
+                                <p>The second word cloud is based on the top 250 movies with highest gross, and nudity still the most popular.</p>
+                                <p>The third word cloud is based on the top 250 movies with highest ratings, and we can see that police, war, love and friend are the most frequently shown keywords. </p>
+                	    </div>
+               			    <div class="col-xs-12 col-sm-12">
+                			    <div class="speaker-item">
+                        		<img src="totalwordcount.png" class="speaker-img">
+                        		</div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12">
+                                <div class="col-xs-12 col-sm-6">
+                                <div class="speaker-item">
+                        		<img src="grosstop250.png" class="speaker-img">
+                			    </div>
+                			    </div>
+                			    <div class="col-xs-12 col-sm-6">
+                			    <div class="speaker-item">
+                        		<img src="grosstopcount250.png" class="speaker-img">
+                        		</div>
+                			    </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12">
+                                <div class="col-xs-12 col-sm-6">
+                                <div class="speaker-item">
+                        		<img src="scoretop250.png" class="speaker-img">
+                			    </div>
+                			    </div>
+                			    <div class="col-xs-12 col-sm-6">
+                			    <div class="speaker-item">
+                        		<img src="scoretopcount250.png" class="speaker-img">
+                        		</div>
+                			    </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12">
+                       		<div class="row">
+                     			<div class="col-xs-12 col-sm-6">
+                        		<h3 class="title-red">Movie budget and gross in different countries</h3>
+                        		<p>The x-axis is movie budget and y-axis represents movie gross, and when the mouse pointer is shown on each point, you can see the detailed information of a movie, its name and rating on IMDB.</p>
+                        		<a href="UKtotal.html" target="_blank">UK Total</a>
+                        		<a href="uk1000-1500.html" target="_blank">UK Selected 500</a>
+                        		<a href="USAtotal.html" target="_blank">USA Total</a>
+                        		<a href="USA1000-1500.html" target="_blank">USA Selected 500</a>
+                        		</div>
+                        		<div class="col-xs-12 col-sm-6">
+                        		<div class="speaker-item">
+                        		<img src="bokeh.png" class="speaker-img">
+                			    </div>
+                			    </div>
+                        </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12">
+                        	
+                        	<div class="col-xs-12 col-sm-5">
+                        	<h3 class="title-red">Distribution of IMDB Score</h3>
+                        	<p>Movies having rating larger than 8.0 are listed in the IMDB top 250, and they are truly great movies from many perspectives. Movies with rating from 7.0 to 8.0 are probably still good movies. Viewers can gain something from them. Movies with rating from 1 to 5 are sometimes considered as ones that "sucks", in one way or the other. </p>
+                        	</div>
+                        	<div class="col-xs-12 col-sm-7">
+                        	<div class="speaker-item">
+                        		<img src="distribution.png" class="speaker-img">
+                			    </div>
+                			</div>
+                        </div>
+                    </div>
+                </div>
+		</section>
+			<section id="analysis">
+			<div class="container-fluid">
+			<h2>Network Analysis</h2>
+            	<div class="row">
+                    <div class="col-xs-12 col-sm-6">
+                    <a href="network/index.html" target="_blank">network result</a>
+                    <p>We use <a href="https://gephi.org" target="_blank">Gephi</a> to do the network analysis of movie actors. In our movie data set, each movie has records of its three main actors, so we choose the three actors name of each movie, and see if one actor/actress has cooperated with other actor/actress.</p>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                    <div class="speaker-item">
+                        		<img src="network-screen.png" class="speaker-img"> 
+                        	</div>
+                    </div>
+                     <div class="col-xs-12 col-sm-12">
+                     <h3 class="title-red">Network of all of the actors in 5000+ movies</h3>
+                    		<div class="speaker-item">
+                        		<img src="net/net-all_4k.png" class="speaker-img"> 
+                        	</div>
+                     </div>
+                 </div>
+                 <div class="col-xs-12 col-sm-12">
+                 <div class="speaker-item">
+                        		<img src="net/net-all_withname.png" class="speaker-img"> 
+                        	</div>
+                 </div> 
+                 <div class="col-xs-12 col-sm-12">
+                 <div class="speaker-item">
+                        		<img src="net/net-all_withoutname.png" class="speaker-img"> 
+                        	</div>
+                 </div> 
+                 <div class="col-xs-12 col-sm-12">
+                 <h3 class="title-red">Network of all of the top 500 actors</h3>
+                 <div class="speaker-item">
+                        		<img src="net/net-500-withname.png" class="speaker-img"> 
+                        	</div>
+                 </div> 
+                 <div class="col-xs-12 col-sm-12">
+                 <div class="speaker-item">
+                        		<img src="net/net-500.png" class="speaker-img"> 
+                        	</div>
+                 </div> 
+			</div>
+			</section>
+			<section id="prediction">
+			<div class="container-fluid">
+			<h2>Prediction</h2>	
+             	<div class="row">
+                     <div class="col-xs-12 col-sm-6">
+                     	<h3 class="title-red">1 Correlation analysis</h3>
+                     	<p>First, we drop aspect_ratio and the link because we don't think these parameters could affect the rating of a movie. </p>
+                     	<p>Then we select all of the numeric features and do the correlation.</p>
+                        </div>
+                     <div class="col-xs-12 col-sm-6">
+                    		<div class="speaker-item">
+                        		<img src="correlation.png" class="speaker-img"> 
+                        	</div>
+                     </div>
+                     <div class="col-xs-12 col-sm-12">
+                     	<div class="col-xs-12 col-sm-6">
+                     		<div class="speaker-item">
+                        		<img src="correlation2.png" class="speaker-img"> 
+                        	</div>
+                      	</div>
+                      	<div class="col-xs-12 col-sm-6">
+                     		<div class="speaker-item">
+                        		<p>It seems that the actors facebook likes are highly correlated with the total which is normally considering it's the sum of the others, so we just remove it and make 2 categories : actor_1_facebook_likes and other_actors_facebook_likes.</p>
+                     	        <p>More over there is a big correlation between the num_voted users and the number of reviews from both critics and users, the gross and the movie_facebook_likes. So we take the mean of those as a new variable called movie_success.</p>
+                        	</div>
+                      	</div>
+                     </div>
+                     <div class="col-xs-12 col-sm-12">
+                     	<h3 class="title-red">2 Random Forest</h3>
+                     	<p>The variables we use to do the random forest analysis are movie_success, duration, director_facebook_likes, actor_1_facebook_likes, other_actors_facebook_likes and budget. And the mean validation sore we get from the random forest is 19.6%, which means that the percentage of variables explained is 19.6%  </p>
+                     </div>
+                 </div>
+			</div>
+			</section>
+			<section id="limitation">
+                <div class="container-fluid">
+                    <h2>Limitations</h2>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-9">
+                            <p>We've noticed that the facebook likes data we collect might not reflect the movie's true Facebook likes since the IMDB Facebook likes only count likes that have been "thumbed up" through the link on thier website, and excludes Facebook likes made outside of the IMDB links.</p>
+                            <p>However, using only the IMDB's facebooks likes is simple and easy to implement.</p>
+                        </div>
+                    </div> 
+                </div>
+            </section>
+             <section class="footer">
+                <div class="container-fluid">
+                        <p>Website designed + built <br>by Ying Wang and Doudou Zhang</p>
+                        <p>contact: <a href="mailto:yw486@georgetown.edu">yw486@georgetown.edu  </a> <a href="mailto:dz181@georgetown.edu">  dz181@georgetown.edu</a></p>
+                    </a>
+                </div>
+            </section> 
+	</div>
+</body>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+
+            data: {
+                email: '',
+                emailGathered: false
+            },
+
+            methods: {
+                addEmail: function () {
+                    this.emailGathered = true;
+
+                    axios.post('/email', {
+                        email: this.email
+                    });
+                }
+            },
+
+            computed: {
+                daytime: function () {
+                    var hour = moment().hour();
+
+                    return hour >= 6 && hour <= 18;
+                },
+
+                nighttime: function () {
+                    return ! this.daytime;
+                }
+            }
+        });
+    </script>
+</html>
